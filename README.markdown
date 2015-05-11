@@ -1,6 +1,6 @@
-## HipChat plugin for Jenkins
+## Cisco Spark plugin for Jenkins
 
-A Jenkins plugin that can send notifications to HipChat chat rooms for build events.
+A Jenkins plugin that can send notifications to Cisco Spark chat rooms for build events.
 
 ### Features
 
