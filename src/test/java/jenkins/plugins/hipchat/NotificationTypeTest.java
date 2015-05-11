@@ -1,4 +1,4 @@
-package jenkins.plugins.hipchat;
+package jenkins.plugins.spark;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -25,8 +25,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import static jenkins.plugins.hipchat.HipChatNotifierBuilder.builder;
-import static jenkins.plugins.hipchat.NotificationType.*;
+import static jenkins.plugins.spark.SparkNotifierBuilder.builder;
+import static jenkins.plugins.spark.NotificationType.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.*;
@@ -45,7 +45,7 @@ public class NotificationTypeTest {
     @Test
     public void testGetMessage() throws Exception {
         mockJenkins();
-        HipChatNotifier notifier = builder().build();
+        SparkNotifier notifier = builder().build();
 
         testNormalConfiguration(build(), notifier);
     }
@@ -54,7 +54,7 @@ public class NotificationTypeTest {
     public void testGetMessageWithConfig() throws Exception {
         mockJenkins();
 
-        HipChatNotifier notifier = builder()
+        SparkNotifier notifier = builder()
                 .setMessageJobCompleted("i feel so $STATUS")
                 .build();
         assertNotifierProduces(build(), notifier, SUCCESS, "i feel so Success");
@@ -66,7 +66,7 @@ public class NotificationTypeTest {
     public void testGetMessageBlankConfiguration() throws Exception {
         mockJenkins();
 
-        HipChatNotifier notifier = builder()
+        SparkNotifier notifier = builder()
                 .setMessageJobCompleted("   ")
                 .setMessageJobStarted(null)
                 .build();
@@ -77,7 +77,7 @@ public class NotificationTypeTest {
     public void testGetMessageAllOverride() throws Exception {
         mockJenkins();
 
-        HipChatNotifier notifier = builder()
+        SparkNotifier notifier = builder()
                 .setMessageJobCompleted("completed")
                 .setMessageJobStarted("started")
                 .build();
@@ -90,7 +90,7 @@ public class NotificationTypeTest {
         assertNotifierProduces(build(), notifier, UNSTABLE, "completed");
     }
 
-    private void testNormalConfiguration(AbstractBuild<?, ?> build, HipChatNotifier notifier) {
+    private void testNormalConfiguration(AbstractBuild<?, ?> build, SparkNotifier notifier) {
         String url = "(<a href=\"http://localhost:8080/jenkins/foo/123\">Open</a>";
         String prefix = "test-job #33";
         assertNotifierProduces(build, notifier, STARTED,prefix
@@ -117,7 +117,7 @@ public class NotificationTypeTest {
         return build;
     }
 
-    private void assertNotifierProduces(AbstractBuild<?, ?> build, HipChatNotifier notifier, NotificationType type,
+    private void assertNotifierProduces(AbstractBuild<?, ?> build, SparkNotifier notifier, NotificationType type,
             String expected) {
         String msg = type.getMessage(build, notifier);
         assertThat(msg, equalTo(expected));
