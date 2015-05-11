@@ -1,0 +1,21 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <f:section title="${%Global Spark Notifier Settings}">
+        <f:entry title="${%Spark Server}" help="/plugin/spark/help-globalConfig-sparkServer.html">
+            <f:textbox name="spark.server" default="api.spark.com" value="${descriptor.server}" />
+        </f:entry>
+        <f:entry title="${%Use v2 API}" help="/plugin/spark/help-globalConfig-sparkv2Enabled.html">
+            <f:checkbox name="spark.v2Enabled" checked="${descriptor.v2Enabled}"/>
+        </f:entry>
+        <f:entry title="${%API Token}" help="/plugin/spark/help-globalConfig-sparkToken.html">
+            <f:textbox name="spark.token" value="${descriptor.token}" />
+        </f:entry>
+        <f:entry title="${%Room}" help="/plugin/spark/help-globalConfig-sparkRoom.html">
+            <f:textbox name="spark.room" value="${descriptor.room}" />
+        </f:entry>
+        <f:entry title="${%Send As}" help="/plugin/spark/help-globalConfig-sparkSendAs.html">
+            <f:textbox name="spark.sendAs" default="Jenkins" value="${descriptor.sendAs}" />
+        </f:entry>
+        <f:validateButton method="sendTestNotification" title="${%Test configuration}" progress="${%Testing...}"
+                          with="spark.server,spark.token,spark.v2Enabled,spark.room,spark.sendAs" />
+    </f:section>
+</j:jelly>
