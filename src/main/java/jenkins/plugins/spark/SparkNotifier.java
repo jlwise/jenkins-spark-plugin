@@ -16,7 +16,6 @@ import hudson.tasks.Publisher;
 import hudson.util.FormValidation;
 import jenkins.model.Jenkins;
 import jenkins.plugins.spark.impl.SparkV1Service;
-import jenkins.plugins.spark.impl.SparkV2Service;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -246,17 +245,13 @@ public class SparkNotifier extends Notifier {
     private SparkService getSparkService() {
         DescriptorImpl desc = getDescriptor();
         String authToken = Util.fixEmpty(token) != null ? token : desc.getToken();
-        return getSparkService(desc.getServer(), authToken, desc.isV2Enabled(),
+        return getSparkService(desc.getServer(), authToken,
                 StringUtils.isBlank(room) ? desc.getRoom() : room, desc.getSendAs());
     }
 
-    private static SparkService getSparkService(String server, String token, boolean v2Enabled, String room,
-            String sendAs) {
-        if (v2Enabled) {
-            return new SparkV2Service(server, token, room);
-        } else {
+    private static SparkService getSparkService(String server, String token, String room,
+            String sendAs) {        
             return new SparkV1Service(server, token, room, sendAs);
-        }
     }
 
     @Extension
@@ -264,7 +259,6 @@ public class SparkNotifier extends Notifier {
 
         private String server = "api.spark.com";
         private String token;
-        private boolean v2Enabled = false;
         private String room;
         private String sendAs = "Jenkins";
         private static int testNotificationCount = 0;
@@ -287,14 +281,6 @@ public class SparkNotifier extends Notifier {
 
         public void setToken(String token) {
             this.token = token;
-        }
-
-        public boolean isV2Enabled() {
-            return v2Enabled;
-        }
-
-        public void setV2Enabled(boolean v2Enabled) {
-            this.v2Enabled = v2Enabled;
         }
 
         public String getRoom() {
@@ -327,9 +313,8 @@ public class SparkNotifier extends Notifier {
         }
 
         public FormValidation doSendTestNotification(@QueryParameter("spark.server") String server,
-                @QueryParameter("spark.token") String token, @QueryParameter("spark.v2Enabled") boolean v2Enabled,
                 @QueryParameter("spark.room") String room, @QueryParameter("spark.sendAs") String sendAs) {
-            SparkService service = getSparkService(server, token, v2Enabled, room, sendAs);
+            SparkService service = getSparkService(server, token,  room, sendAs);
             service.publish(Messages.TestNotification(++testNotificationCount), "yellow");
             return FormValidation.ok(Messages.TestNotificationSent());
         }
