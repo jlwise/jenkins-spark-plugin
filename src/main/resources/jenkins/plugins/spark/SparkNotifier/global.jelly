@@ -3,9 +3,9 @@
         <f:entry title="${%Spark Server}" help="/plugin/spark/help-globalConfig-sparkServer.html">
             <f:textbox name="spark.server" default="api.spark.com" value="${descriptor.server}" />
         </f:entry>
-        <f:entry title="${%Use v2 API}" help="/plugin/spark/help-globalConfig-sparkv2Enabled.html">
+        <!-- <f:entry title="${%Use v2 API}" help="/plugin/spark/help-globalConfig-sparkv2Enabled.html">
             <f:checkbox name="spark.v2Enabled" checked="${descriptor.v2Enabled}"/>
-        </f:entry>
+        </f:entry> -->
         <f:entry title="${%API Token}" help="/plugin/spark/help-globalConfig-sparkToken.html">
             <f:textbox name="spark.token" value="${descriptor.token}" />
         </f:entry>

@@ -3,5 +3,5 @@
   Since we don't really have anything dynamic here, let's just use static HTML. 
 -->
 <div>
-  This plugin is a Spark notifier that can publish build status to Spark rooms.
+  This plugin is a Cisco Spark notifier that can publish build status to Cisco Spark rooms.
 </div>
