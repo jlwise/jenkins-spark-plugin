@@ -1,6 +1,6 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-    <f:section title="${%Global Spark Notifier Settings}">
-        <f:entry title="${%Spark Server}" help="/plugin/spark/help-globalConfig-sparkServer.html">
+    <f:section title="${%Cisco Spark Notifier Settings}">
+        <f:entry title="${%Cisco Spark Server}" help="/plugin/spark/help-globalConfig-sparkServer.html">
             <f:textbox name="spark.server" default="api.spark.com" value="${descriptor.server}" />
         </f:entry>
         <f:entry title="${%API Token}" help="/plugin/spark/help-globalConfig-sparkToken.html">
