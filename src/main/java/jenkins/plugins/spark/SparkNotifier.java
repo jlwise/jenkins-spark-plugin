@@ -241,7 +241,7 @@ public class SparkNotifier extends Notifier {
                 return false;
         }
     }
-
+//desc.isV2Enabled(),
     private SparkService getSparkService() {
         DescriptorImpl desc = getDescriptor();
         String authToken = Util.fixEmpty(token) != null ? token : desc.getToken();

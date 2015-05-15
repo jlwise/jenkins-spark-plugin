@@ -1,9 +1,5 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-
-    <f:entry title="${%Auth Token}" help="/plugin/spark/help-projectConfig-token.html">
-        <f:textbox name="spark.token" value="${instance.token}" />
-    </f:entry>
     <f:entry title="${%Project Room}" help="/plugin/spark/help-projectConfig-sparkRoom.html">
         <f:textbox name="spark.room" value="${instance.room}" />
     </f:entry>
