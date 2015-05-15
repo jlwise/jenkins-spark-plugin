@@ -91,7 +91,7 @@ public class NotificationTypeTest {
     }
 
     private void testNormalConfiguration(AbstractBuild<?, ?> build, SparkNotifier notifier) {
-        String url = "(<a href=\"http://localhost:8080/jenkins/foo/123\">Open</a>";
+        String url = "(http://localhost:8080/jenkins/foo/123";
         String prefix = "test-job #33";
         assertNotifierProduces(build, notifier, STARTED,prefix
                 + " Starting... (Started by changes from john.doe@example.com (1 file(s) changed)) " + url + ")");

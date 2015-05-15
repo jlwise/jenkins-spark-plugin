@@ -37,11 +37,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.cisco.dft.cd.spark.intg.service</groupId>
-                <artifactId>cd-spark-integration-service</artifactId>
-                <version>0.0.2</version>
-            </dependency>
-            <dependency>
                 <groupId>commons-httpclient</groupId>
                 <artifactId>commons-httpclient</artifactId>
                 <version>3.1</version>
@@ -73,6 +68,11 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <dependency>
+                <groupId>com.cisco.dft.cd.spark.intg.service</groupId>
+                <artifactId>cd-spark-integration-service</artifactId>
+                <version>0.0.1</version>
+            </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
@@ -141,9 +141,9 @@
         <id>repo.jenkins-ci.org</id>
         <url>http://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
-<!--         <pluginRepository>
+        <pluginRepository>
             <id>repo-art.cisco.com</id>
             <url>http://repo-art.cisco.com/artifactory/repo</url>
         </pluginRepository>
-    -->    </pluginRepositories>
+       </pluginRepositories>
 </project>
