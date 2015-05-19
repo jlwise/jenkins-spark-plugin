@@ -6,3 +6,5 @@ target
 .settings
 bin
 work
+logs
+logback.xml

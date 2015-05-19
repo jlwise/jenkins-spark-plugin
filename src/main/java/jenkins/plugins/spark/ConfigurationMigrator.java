@@ -22,6 +22,7 @@ public class ConfigurationMigrator extends ItemListener {
                 SparkNotifier notifier = item.getPublishersList().get(SparkNotifier.class);
                 if (notifier != null) {
                     notifier.setRoom(property.getRoom());
+                    // notifier.setBearerToken(property.getBearerToken());
                     notifier.setStartNotification(property.getStartNotification());
                     notifier.setNotifyAborted(property.getNotifyAborted());
                     notifier.setNotifyBackToNormal(property.getNotifyBackToNormal());

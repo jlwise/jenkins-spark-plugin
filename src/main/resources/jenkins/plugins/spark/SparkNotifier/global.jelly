@@ -3,7 +3,7 @@
         <f:entry title="${%Cisco Spark Server}" help="/plugin/spark/help-globalConfig-sparkServer.html">
             <f:textbox name="spark.server" default="api.spark.com" value="${descriptor.server}" />
         </f:entry>
-        <f:entry title="${%API Token}" help="/plugin/spark/help-globalConfig-sparkToken.html">
+        <f:entry title="${%Moderator's Bearer Token}" help="/plugin/spark/help-globalConfig-sparkToken.html">
             <f:textbox name="spark.token" value="${descriptor.token}" />
         </f:entry>
         <f:entry title="${%Room}" help="/plugin/spark/help-globalConfig-sparkRoom.html">

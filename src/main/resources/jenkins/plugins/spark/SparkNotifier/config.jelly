@@ -1,7 +1,11 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-    <f:entry title="${%Project Room}" help="/plugin/spark/help-projectConfig-sparkRoom.html">
+    <f:entry title="${%Room ID}" help="/plugin/spark/help-projectConfig-sparkRoom.html">
         <f:textbox name="spark.room" value="${instance.room}" />
+    </f:entry>
+
+    <f:entry title="${%Moderator's Bearer Token}" help="/plugin/spark/help-projectConfig-token.html">
+        <f:textbox name="spark.token" value="${instance.token}" />
     </f:entry>
 
     <f:section title="${%Notification settings}">
@@ -34,7 +38,7 @@
         </f:entry>
     </f:section>
 
-    <f:section title="${%Message Templates}">
+<!--     <f:section title="${%Message Templates}">
         <f:entry title="${%Job started}" help="/plugin/spark/help-projectConfig-sparkMessages.html">
             <f:textbox name="spark.startJobMessage" value="${instance.startJobMessage}"/>
             Default: '${instance.getStartJobMessageDefault()}'
@@ -44,5 +48,5 @@
             <f:textbox name="spark.completeJobMessage" value="${instance.completeJobMessage}"/>
             Default: '${instance.getCompleteJobMessageDefault()}'
         </f:entry>
-    </f:section>
+    </f:section> -->
 </j:jelly>
