@@ -2,7 +2,9 @@
 
 A Jenkins plugin that can send notifications to Cisco Spark chat rooms for build events. This plugin is a fork from the Jenkins HipChat Plugin, and is being used to integrate CI notifications to Spark.
 
-More details to come
+A room ID token and the room moderator's bearer token are required to send messages to a particular spark room.
+
+More details to come.
 
 ### Features
 
