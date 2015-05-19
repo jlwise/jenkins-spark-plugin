@@ -3,10 +3,14 @@ package jenkins.plugins.spark.impl;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
-import com.cisco.dft.cd.spark.intg.service.pojo.HttpResponseEntity;
-import com.cisco.dft.cd.spark.intg.service.pojo.Message;
-import com.cisco.dft.cd.spark.intg.service.service.SparkIntegrationService;
-import com.cisco.dft.cd.spark.intg.service.util.Constants.PlatformType;
+import com.cisco.dft.cd.spark.intg.pojo.HttpResponseEntity;
+// import com.cisco.dft.cd.spark.intg.service.pojo.*;
+// import com.cisco.dft.cd.spark.intg.service.*;
+// import com.cisco.dft.cd.spark.intg.service.pojo.Actor;
+import com.cisco.dft.cd.spark.intg.pojo.Message;
+import com.cisco.dft.cd.spark.intg.pojo.Actor;
+import com.cisco.dft.cd.spark.intg.service.impl.SparkIntegrationService;
+import com.cisco.dft.cd.spark.intg.util.Constants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jenkins.plugins.spark.SparkService;
@@ -20,12 +24,17 @@ public class SparkV1Service extends SparkService {
     private final String token;
     private final String[] roomIds;
     private final String sendAs;
+    private SparkIntegrationService service;
 
     public SparkV1Service(String server, String token, String roomIds, String sendAs) {
         this.server = server;
         this.token = token;
         this.roomIds = roomIds == null ? DEFAULT_ROOMS : roomIds.split("\\s*,\\s*");
         this.sendAs = sendAs;
+        this.service = new SparkIntegrationService();
+        service.inviteParticipants("a75a3670-fd91-11e4-a797-61b8418480fd",
+            "5a86a12b-c580-4ada-b4c0-9d0dfe2d72cd",
+            "Yzk5NzI4MjctMDc3MC00ZGQ0LTgwYTQtYzk1NWQ1YjFjYTU1OTQ0OWMyMzQtMjgx");
     }
 
     @Override
@@ -61,11 +70,16 @@ public class SparkV1Service extends SparkService {
         //     }
         // }
 
+        Actor actor = new Actor();
+        actor.setUsername("platform-jenkins");
+        actor.setPassword("W8.5)M1)/17=y6cTirbVL)oVc|0jF$M0");
+        actor.setUid("e2756438-fc0b-4281-a3b3-a9dcf9af3aaf");
+        
         Message messageToSend = new Message();
         messageToSend.setMessage(message);
-        messageToSend.setPlatformType(PlatformType.JENKINS);
         messageToSend.setRoomId("c60f38e0-ef86-11e4-9df9-270f179cbc2c");
-        HttpResponseEntity response = SparkIntegrationService.publishMessage(messageToSend);
+        messageToSend.setActor(actor);
+        HttpResponseEntity response = service.publishMessage(messageToSend);
         System.out.println("response: " + response.getStatusCode());
     }
 
