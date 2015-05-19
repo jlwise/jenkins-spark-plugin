@@ -1,0 +1,33 @@
+spring:
+  profiles.active: dev
+---
+spring:
+  profiles: dev
+application:
+  grantType: urn:ietf:params:oauth:grant-type:saml2-bearer
+  clientID: C118c5ea0db6cb8ee42428d62b2949f84f181081313f2f9eea08eff1599c16c39
+  clientSecret: 9931beebba9fa019130b048a508fa1222263ef2eafc87fc98bc4a09308acfc01
+  scope: Identity:Config Identity:Organization Identity:SCIM webexsquare:admin webexsquare:get_conversation
+  tokenEndpointUrl: https://idbroker.webex.com/idb/oauth2/v1/access_token
+  bearerTokenEndpointUrl: https://idbroker.webex.com/idb/token/818ebe7b-7c20-4a5e-8cc7-e9f3371c2c48/v2/actions/GetBearerToken/invoke
+  orgId: 818ebe7b-7c20-4a5e-8cc7-e9f3371c2c48
+  machineAccountUserName: 
+  machineAccountPassword:
+---
+spring:
+  profiles: stage
+application:
+  grantType: client_credentials
+  clientID: 
+  clientSecret:
+  scope: 
+  tokenEndpointUrl:
+---
+spring:
+  profiles: prod
+application:
+  grantType: client_credentials
+  clientID: 
+  clientSecret:
+  scope: 
+  tokenEndpointUrl:
