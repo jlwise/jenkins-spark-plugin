@@ -32,10 +32,9 @@ public final class NotificationTypeUtils {
     }
 
     public static String getUrl(AbstractBuild<?, ?> build) {
-        return Jenkins.getInstance().getRootUrl() + build.getUrl();
+        return "https://ci-stg.cisco.com/" + build.getUrl();
     }
 
-    //\\w+\\s+\\w+
     public static String getChanges(AbstractBuild<?, ?> build) {
         if (!build.hasChangeSetComputed()) {
             LOGGER.log(FINE, "No changeset computed for job {0}", build.getProject().getDisplayName());

@@ -4,9 +4,11 @@ import com.google.common.base.Preconditions;
 import hudson.EnvVars;
 import hudson.model.AbstractBuild;
 import hudson.model.Result;
-import hudson.Util;
+//import hudson.Util;
 import hudson.util.LogTaskListener;
 import hudson.util.VariableResolver;
+
+import com.cisco.dft.cd.spark.intg.util.Util;
 
 import java.io.IOException;
 import java.util.Map;
@@ -19,7 +21,7 @@ import static java.util.logging.Level.INFO;
 
 public enum NotificationType {
 
-    STARTED("green", true) {
+    STARTED("orange", true) {
         @Override
         protected String getStatus() {
             return Messages.Started();
@@ -104,13 +106,13 @@ public enum NotificationType {
             userConfig = notifier.getCompleteJobMessage();
             defaultConfig = Messages.JobCompleted();
         }
-
-        if (Util.fixEmptyAndTrim(userConfig) == null) {
-            Preconditions.checkNotNull(defaultConfig, "Default template not set for %s", this);
-            return defaultConfig;
-        } else {
-            return userConfig;
-        }
+        return defaultConfig;
+        // if (Util.fixEmptyAndTrim(userConfig) == null) {
+        //     Preconditions.checkNotNull(defaultConfig, "Default template not set for %s", this);
+        //     return defaultConfig;
+        // } else {
+        //     return userConfig;
+        // }
     }
 
     private Map<String, String> collectParametersFor(AbstractBuild<?, ?> build) {
@@ -120,7 +122,11 @@ public enum NotificationType {
 
         String cause = NotificationTypeUtils.getCause(build);
         String changes = NotificationTypeUtils.getChanges(build);
-
+        String[] projectName = build.getProject().getFullDisplayName().split(" » ");
+        if(projectName.length > 2) 
+            merged.put("JOB_SHORT_NAME", projectName[projectName.length - 2] + "/" + projectName[projectName.length - 1]);
+        else
+            merged.put("JOB_SHORT_NAME", build.getProject().getFullDisplayName());
         merged.put("STATUS", getStatus());
         merged.put("DURATION", build.getDurationString());
         merged.put("URL", NotificationTypeUtils.getUrl(build));
