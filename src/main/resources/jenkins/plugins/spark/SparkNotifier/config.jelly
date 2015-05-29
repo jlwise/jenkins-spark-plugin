@@ -1,10 +1,10 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-    <f:entry title="${%Room ID}" help="/plugin/spark/help-projectConfig-sparkRoom.html">
+    <f:entry title="${%Spark Room ID}" description="The Cisco Spark Room ID to send notifications to." help="/plugin/spark/help-projectConfig-sparkRoom.html">
         <f:textbox name="spark.room" value="${instance.room}" />
     </f:entry>
 
-    <f:entry title="${%Moderator's Bearer Token}" help="/plugin/spark/help-projectConfig-token.html">
+    <f:entry title="${%Bearer Token}" description="Bearer Token of the Spark room's Moderator." help="/plugin/spark/help-projectConfig-token.html">
         <f:textbox name="spark.token" value="${instance.token}" />
     </f:entry>
 
