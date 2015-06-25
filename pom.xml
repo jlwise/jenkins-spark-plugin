@@ -68,7 +68,7 @@
             <dependency>
                 <groupId>com.cisco.dft.cd.spark.intg.service</groupId>
                 <artifactId>cd-spark-integration-service</artifactId>
-                <version>0.0.5</version>
+                <version>0.0.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
