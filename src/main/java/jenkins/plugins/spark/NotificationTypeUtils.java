@@ -32,7 +32,7 @@ public final class NotificationTypeUtils {
     }
 
     public static String getUrl(AbstractBuild<?, ?> build) {
-        return "https://ci-stg.cisco.com/" + build.getUrl();
+        return "https://ci.cisco.com/" + build.getUrl();
     }
 
     public static String getChanges(AbstractBuild<?, ?> build) {
