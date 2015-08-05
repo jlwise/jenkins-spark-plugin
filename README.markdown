@@ -4,8 +4,6 @@ A Jenkins plugin that can send notifications to Cisco Spark chat rooms for build
 
 A room ID token and the room moderator's bearer token are required to send messages to a particular spark room.
 
-More details to come.
-
 ### Features
 
 * Ability to test notifications
