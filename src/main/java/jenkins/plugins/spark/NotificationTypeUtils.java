@@ -46,7 +46,14 @@ public final class NotificationTypeUtils {
             ChangeLogSet.Entry entry = (ChangeLogSet.Entry) o;
             LOGGER.log(FINEST, "Entry {0}", entry);
             String[] authorName = entry.getAuthor().getDisplayName().split(" ");
-            authors.add(authorName[0] + " " + authorName[1]);
+            if(authorName.length >= 2) {
+                authors.add(authorName[0] + " " + authorName[1]);
+            }
+            else if (authorName.length < 1) { 
+                authors.add("No Name Found");
+            } else {
+                authors.add(authorName[0]);
+            }
             try {
                 changedFiles += entry.getAffectedFiles().size();
             } catch (UnsupportedOperationException e) {
